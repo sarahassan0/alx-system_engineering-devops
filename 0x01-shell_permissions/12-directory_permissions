@@ -1,2 +1,2 @@
 #!/bin/bash
-chgrp school home
+mkdir -m 751 my_dir
