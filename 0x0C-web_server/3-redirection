@@ -7,6 +7,6 @@ sudo apt-get update
 sudo apt-get -y install nginx
 sudo ufw allow 'Nginx HTTP'
 sudo sh -c 'echo "Hello World!" > /var/www/html/index.nginx-debian.html'
-sudo sed -i '24i\       rewrite ^/redirect_me https://www.youtube.com/watch?v=QH2-TGUlwu4 permanent;' /etc/nginx/sites-available/default
+sudo sed -i '24i\       rewrite ^/redirect_me https://youtu.be/-eSpiwGcW2k?si=QwpDiJcvzbZMnCnj permanent;' /etc/nginx/sites-available/default
 
 sudo service nginx start
