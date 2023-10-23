@@ -1,7 +1,7 @@
 #!/usr/bin/python3
-""" Export to JSON module"""
+""" Export to CSV module"""
 
-import json
+import csv
 import requests
 from sys import argv
 
@@ -13,11 +13,8 @@ if __name__ == '__main__':
     todos = requests.get(f'{url}todos', params={"userId": userId}).json()
     completed = [todo.get('title') for todo in todos if todo.get('completed')]
 
-    with open(f'{userId}.json', mode='w') as file:
-        json.dump({
-            userId: [
-                {"task": todo.get('title'), "completed": todo.get('completed'),
-                 "username": user.get('username')}
-                for todo in todos
-            ]
-        }, file)
+    with open(f'{userId}.csv', mode='w') as file:
+        writer = csv.writer(file, quoting=csv.QUOTE_ALL)
+        for todo in todos:
+            writer.writerow([userId, user.get('username'),
+                            todo.get('completed'), todo.get('title')])
