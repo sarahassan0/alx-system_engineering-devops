@@ -8,6 +8,6 @@ def number_of_subscribers(subreddit):
     """gets the number of subscribers for a given subreddit"""
 
     url = 'https://www.reddit.com/r/{}/about.json'.format(subreddit)
-    res = requests.get(url).json()
+    res = requests.get(url, headers={'User-Agent': 'anything'}).json()
 
     return res.get('data', {}).get('subscribers', 0)
