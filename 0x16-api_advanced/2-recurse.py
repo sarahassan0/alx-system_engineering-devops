@@ -24,9 +24,9 @@ def recurse(subreddit, hot_list=[], after=None, count=0):
         for post in posts:
             hot_list.append(post.get('data', {}).get('title', ''))
 
-        after = data.get('after', '')
-        print(count)
+        after = data.get('after', None)
         count = len(hot_list[1:])
-        return recurse(subreddit, hot_list, after, count)
-    else:
-        return None
+        if after:
+            return recurse(subreddit, hot_list, after, count)
+        else:
+            return hot_list
